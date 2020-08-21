@@ -1,9 +1,7 @@
 package com.kodilla.ecommercee;
 
 import com.kodilla.ecommercee.domain.GroupDTO;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,27 +10,26 @@ import java.util.List;
 @RequestMapping("/v1/group")
 public class GroupController {
 
-    @RequestMapping(method = RequestMethod.GET, value = "getGroups")
+    @GetMapping(value = "getGroups")
     public List<GroupDTO> getGroups(){
 
         return new ArrayList<>();
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "createGroup")
+    @PostMapping("createGroup")
     public void createGroup(GroupDTO groupDTO){
 
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "getGroup")
+    @GetMapping("getGroup")
     public GroupDTO getGroup(Long groupId){
 
         return new GroupDTO(1L, "test name");
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "updateGroup")
+    @PutMapping("updateGroup")
     public GroupDTO updateGroup(GroupDTO groupDTO){
 
         return new GroupDTO(1L, "updated test name");
     }
-
 }
