@@ -1,4 +1,5 @@
 package com.kodilla.ecommercee;
-//komentarz A
+
+//komentarz 
 public class UserController {
 }
