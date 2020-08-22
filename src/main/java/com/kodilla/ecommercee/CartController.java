@@ -14,10 +14,10 @@ public class CartController {
 
     @PostMapping(value = "/createEmpty")
     public CartDto createEmptyCart(CartDto cartDto) {
-        return new CartDto(1L, "cart");
+        return new CartDto(1L, "empty cart");
     }
 
-    @GetMapping
+    @GetMapping(value = "/getEmptyCart")
     public List<CartDto> getEmptyCart() {
     return new ArrayList<>();
     }
