@@ -4,32 +4,37 @@ import com.kodilla.ecommercee.domain.CartDto;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @AllArgsConstructor
 @RestController
 @RequestMapping("/v1/cart")
 public class CartController {
 
-    @PostMapping
-    public void createEmptyCart(@PathVariable Long cartId) {
+    @PostMapping(value = "/createEmpty")
+    public CartDto createEmptyCart(CartDto cartDto) {
+        return new CartDto(1L, "cart");
     }
 
     @GetMapping
-    public void getEmptyCart(@PathVariable Long cartId) {
-
+    public List<CartDto> getEmptyCart() {
+    return new ArrayList<>();
     }
 
-    @PostMapping
-    public void addProductToCart(@PathVariable Long productId) {
-
+    @PostMapping(value = "/addProduct")
+    public CartDto addProductToCart(@RequestBody CartDto cartDto) {
+        return new CartDto(1L, "cart");
     }
 
     @DeleteMapping
-    public boolean deleteProduct(@PathVariable Long cartId) {
-        return true;
+    public CartDto deleteProduct(@PathVariable Long productId) {
+
+        return null;
     }
 
-    @PostMapping
-    public void createOrderFromCart(@RequestBody CartDto cartDto) {
-
+    @PostMapping(value = "/createOrder")
+    public String createOrderFromCart(@RequestBody CartDto cartDto) {
+    return "Order created";
     }
 }
