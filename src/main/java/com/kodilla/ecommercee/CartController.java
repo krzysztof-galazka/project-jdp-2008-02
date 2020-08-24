@@ -1,6 +1,7 @@
 package com.kodilla.ecommercee;
 
 import com.kodilla.ecommercee.domain.CartDto;
+import com.kodilla.ecommercee.domain.OrderDto;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,14 +28,14 @@ public class CartController {
         return new CartDto(1L, "cart");
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public CartDto deleteProduct(@PathVariable Long productId) {
 
         return null;
     }
 
     @PostMapping(value = "/createOrder")
-    public String createOrderFromCart(@RequestBody CartDto cartDto) {
-    return "Order created";
+    public OrderDto createOrderFromCart(@RequestBody OrderDto orderDto) {
+    return new OrderDto(1L, "order");
     }
 }
