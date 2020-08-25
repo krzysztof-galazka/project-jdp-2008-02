@@ -1,4 +1,4 @@
-package com.kodilla.ecommercee;
+package com.kodilla.ecommercee.controller;
 
 import com.kodilla.ecommercee.domain.CartDto;
 import com.kodilla.ecommercee.domain.OrderDto;
@@ -14,13 +14,13 @@ import java.util.List;
 public class CartController {
 
     @PostMapping(value = "/createEmpty")
-    public CartDto createEmptyCart(CartDto cartDto) {
+    public CartDto createEmptyCart(@RequestBody CartDto cartDto) {
         return new CartDto(1L, "empty cart");
     }
 
-    @GetMapping(value = "/getEmptyCart")
+    @GetMapping
     public List<CartDto> getEmptyCart() {
-    return new ArrayList<>();
+        return new ArrayList<>();
     }
 
     @PostMapping(value = "/addProduct")
@@ -28,14 +28,13 @@ public class CartController {
         return new CartDto(1L, "cart");
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{productId}")
     public CartDto deleteProduct(@PathVariable Long productId) {
-
-        return null;
+        return new CartDto(1L, "delete cart");
     }
 
     @PostMapping(value = "/createOrder")
     public OrderDto createOrderFromCart(@RequestBody OrderDto orderDto) {
-    return new OrderDto(1L, "order");
+        return new OrderDto(1L, "order");
     }
 }
