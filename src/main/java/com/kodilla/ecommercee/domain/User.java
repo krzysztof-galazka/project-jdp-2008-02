@@ -1,11 +1,12 @@
-package com.kodilla.ecommercee;
+package com.kodilla.ecommercee.domain;
 
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
-import java.util.List;
+
+import static com.kodilla.ecommercee.domain.UserStatus.ACTIVE;
 
 @Builder
 @AllArgsConstructor
@@ -13,8 +14,8 @@ import java.util.List;
 @EqualsAndHashCode
 @Getter
 @Entity
-@Table(name = "USER")
-public class User {
+@Table(name = "USERS")
+public final class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -24,22 +25,22 @@ public class User {
     private String login;
 
     @NotNull
-    @Column("PASSWORD")
+    @Column(name = "PASSWORD")
     private String password;
 
     @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "USER_STATUS")
-    private UserStatus userStatus = UserStatus.ACTIVE;
+    private final UserStatus userStatus = ACTIVE;
 
     @NotNull
     @Column(name = "CREATE_ACCOUNT_DATE")
     private final Date createAccountDate = new Date();
 
-    @OneToMany(
-            targetEntity = Order.class,
-            mappedBy = "user",
-            fetch = FetchType.LAZY
-    )
-    private List<Order> orders;
+//    @OneToMany(
+//            targetEntity = Order.class,
+//            mappedBy = "user",
+//            fetch = FetchType.LAZY
+//    )
+//    private List<Order> orders;
 }
