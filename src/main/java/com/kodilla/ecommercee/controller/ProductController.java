@@ -24,8 +24,8 @@ public final class ProductController {
     }
 
     @PostMapping(consumes = APPLICATION_JSON_VALUE)
-    public void createProduct(@RequestBody final ProductDto productDto) {
-        System.out.println("Create product");
+    public ProductDto createProduct(@RequestBody final ProductDto productDto) {
+        return new ProductDto(1l,"Product");
     }
 
     @PutMapping
